@@ -1,20 +1,31 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
+
 export const prerender = true;
 
 export async function getStaticPaths() {
     const posts = await getCollection("blog_posts");
     return posts.map((post) => ({
-        params: { slug: post.slug },
+        params: { slug: post.id },
         props: post,
     }));
 }
 type Props = CollectionEntry<"blog_posts">;
-
-const post = Astro.props;
-const { Content } = await post.render();
 ---
 
-<Blog {...post.data}>
-    <Content />
-</Blog>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{Astro.props.data.title}</title>
+    </head>
+    <body>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/blog/">Blog</a>
+
+        <article set:html={Astro.props.rendered!.html} />
+    </body>
+</html>

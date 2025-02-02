@@ -1,16 +1,6 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-
-export const prerender = true;
-
-export async function getStaticPaths() {
-    const posts = await getCollection("blog_posts");
-    return posts.map((post) => ({
-        params: { slug: post.id },
-        props: post,
-    }));
-}
-type Props = CollectionEntry<"blog_posts">;
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog_posts");
 ---
 
 <html lang="en">
@@ -19,13 +9,24 @@ type Props = CollectionEntry<"blog_posts">;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>{Astro.props.data.title}</title>
+        <title>Astro</title>
     </head>
     <body>
         <a href="/">Home</a>
         <a href="/about/">About</a>
         <a href="/blog/">Blog</a>
 
-        <article set:html={Astro.props.rendered!.html} />
+        <h1>my astro site</h1>
+        <h1>da blog</h1>
+        <p>wip</p>
+        <ul>
+            {
+                posts.map((post) => (
+                    <li>
+                        <a href={`/${post.id}`}>{post.data.title}</a>
+                    </li>
+                ))
+            }
+        </ul>
     </body>
 </html>
