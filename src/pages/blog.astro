@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 const posts = await getCollection("blog_posts");
+import "../styles/global.css";
+import Navigation from "../components/nav.astro";
 ---
 
 <html lang="en">
@@ -12,12 +14,10 @@ const posts = await getCollection("blog_posts");
         <title>Astro</title>
     </head>
     <body>
-        <a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a href="/blog/">Blog</a>
+        <Navigation />
 
         <h1>my astro site</h1>
-        <h1>da blog</h1>
+        <h2>da blog</h2>
         <p>wip</p>
         <ul>
             {

@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Sono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sono:wght@500&display=swap");
+
+html {
+    background-color: #0c0c0c;
+    font-family: "Sono", sans-serif;
+}
+
+body {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 80ch;
+    padding: 1rem;
+    line-height: 1.5;
+    color: #f3efe0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 1rem 0;
+    font-size: 2.5rem;
+    color: #ba5a31;
+}
+
+a {
+    color: #8c9ccf;
+}
+a:visited {
+    color: #4860ad;
+}

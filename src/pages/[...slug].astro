@@ -11,6 +11,9 @@ export async function getStaticPaths() {
     }));
 }
 type Props = CollectionEntry<"blog_posts">;
+
+import "../styles/global.css";
+import Navigation from "../components/nav.astro";
 ---
 
 <html lang="en">
@@ -22,10 +25,7 @@ type Props = CollectionEntry<"blog_posts">;
         <title>{Astro.props.data.title}</title>
     </head>
     <body>
-        <a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a href="/blog/">Blog</a>
-
+        <Navigation />
         <article set:html={Astro.props.rendered!.html} />
     </body>
 </html>
